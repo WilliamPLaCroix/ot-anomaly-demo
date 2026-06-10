@@ -154,7 +154,7 @@ Detected anomalies should appear as spikes in reconstruction error and can be in
 
 Initial F1 score: 0.2930
 
-![MVP Confusion Matrix][../data/confusion_matrix.png]
+![MVP Confusion Matrix][data/confusion_matrix.png]
 
 ## Limitations
 
