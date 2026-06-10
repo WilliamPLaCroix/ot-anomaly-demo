@@ -68,12 +68,17 @@ def monitor():
             "error": float(loss.item()),
             "CI": float(CI)
         })
+        
+    ci_map = {a["timestamp"]: a["CI"] for a in st.session_state.alerts}
+    ci_list = [ci_map.get(t, None) for t in st.session_state.timestamps]
 
     chart_df = pd.DataFrame({
         "timestamp": st.session_state.timestamps,
         "error": st.session_state.errors,
-        "CI": [alert["CI"] for alert in st.session_state.alerts if alert["timestamp"] in st.session_state.timestamps]
+        "CI": ci_list
     })
+
+    chart_df["timestamp"] = pd.to_datetime(chart_df["timestamp"], errors="coerce")
 
     fig = px.line(
         chart_df,
@@ -93,7 +98,7 @@ def monitor():
         name="Anomalies"
         )
 
-    st.plotly_chart(fig, width=True)
+    st.plotly_chart(fig, use_container_width=True)
 
     st.dataframe(pd.DataFrame(st.session_state.alerts).tail(20))
 
