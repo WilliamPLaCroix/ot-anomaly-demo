@@ -5,3 +5,5 @@ matplotlib
 tqdm
 kagglehub
 fire
+streamlit
+plotly
