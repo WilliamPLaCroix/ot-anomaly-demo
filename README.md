@@ -152,9 +152,9 @@ streamlit run app/streamlit_app.py
 The model learns baseline traffic patterns and identifies observations that differ substantially from normal operational behavior.
 Detected anomalies should appear as spikes in reconstruction error and can be investigated through the dashboard interface.
 
-Initial F1 score: 0.2930
+MVP F1 score: 0.2930
 
-![MVP Confusion Matrix][../data/confusion_matrix.png]
+![MVP Confusion Matrix](/data/confusion_matrix.png)
 
 ## Limitations
 
