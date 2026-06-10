@@ -172,16 +172,6 @@ MVP F1 score: 0.2930
 * Raw features: MVP features only include raw inputs without any engineered features based on timeseries data. Network anomalies will likely be best detected by *change in network traffic*, rather than simply raw data at any given point. Feature engineering for statistical differences as well as change over time should improve model performance.
 * No dimensionality reduction: MVP includes all 51 input features from original dataset without any EDA for feature selection (PCA, correlation/dependency, ANOVA F-value).
 
-## Technologies
-
-* Python
-* PyTorch
-* Pandas
-* NumPy
-* Scikit-learn
-* Streamlit
-* Matplotlib
-
 ## Motivation
 
 This project was developed to explore machine learning applications in operational technology (OT) and industrial cybersecurity. The focus is on practical anomaly detection workflows that bridge data engineering, machine learning, and security monitoring.
