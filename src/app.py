@@ -93,3 +93,5 @@ def monitor():
     st.dataframe(pd.DataFrame(st.session_state.alerts).tail(20))
 
     st.session_state.idx += 1
+
+monitor()
