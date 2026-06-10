@@ -164,9 +164,8 @@ MVP F1 score: 0.2930
 
 ## Limitations
 
-* Data leakage: MVP trains on normal network traffic, and evaluates on merged normal+attack traffic. All normal traffic already seen in training data
-* Dataset is constructed as a single time-series, from 10:00AM to 11:30AM, with a single block of attack rows from 10:29AM to 10:45AM. Any model trained to look for attacks may only learn this one instance.
-* Network structure: Autoencoder layer sizes have not been tuned
+* Data leakage: MVP trains on normal network traffic, and evaluates on merged normal+attack traffic. All normal traffic already seen in training data.
+* Network structure: Autoencoder layer size differences and activation functions have not been tested.
 * Threshold value: MVP Error threshold set to 95th percentile of training errors. We expect 5% false negatives, current model gives ~10% false negatives, and ~40% false positives.
 * Meaned training errors: training errors are batch-meaned (n=256) during training, so thresholding calculates percentile against batch-meaned errors, rather than sample-wise training errors.
 * Raw features: MVP features only include raw inputs without any engineered features based on timeseries data. Network anomalies will likely be best detected by *change in network traffic*, rather than simply raw data at any given point. Feature engineering for statistical differences as well as change over time should improve model performance.
