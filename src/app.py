@@ -61,23 +61,21 @@ def monitor():
     THRESHOLD = 0.35
 
     # calculate error confidence interval
-    error_tensor = torch.tensor(st.session_state.errors)
-    CI = 1.96 * error_tensor.std() / torch.sqrt(torch.tensor(len(error_tensor)))
 
     if loss.item() > THRESHOLD:
         st.session_state.alerts.append({
             "timestamp": row["Timestamp"],
             "error": float(loss.item()),
-            "CI": float(CI)
+            "Label": float(CI)
         })
-        
-    ci_map = {a["timestamp"]: a["CI"] for a in st.session_state.alerts}
+
+    ci_map = {a["timestamp"]: a["Label"] for a in st.session_state.alerts}
     ci_list = [ci_map.get(t, None) for t in st.session_state.timestamps]
 
     chart_df = pd.DataFrame({
         "timestamp": st.session_state.timestamps,
         "error": st.session_state.errors,
-        "CI": ci_list
+        "Label": row["Normal/Attack"],
     })
 
     chart_df["timestamp"] = pd.to_datetime(chart_df["timestamp"], errors="coerce")
