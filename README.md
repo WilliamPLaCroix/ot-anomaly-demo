@@ -65,14 +65,15 @@ During inference:
 2. Reconstruction error is calculated as MSE
 3. Observations exceeding a threshold are flagged as anomalies
 
-### 5. Visualization  #TODO
+### 5. Visualization 
 
 A Streamlit dashboard displays:
 
-* Traffic statistics
 * Reconstruction error distributions
 * Detected anomalies
 * Temporal anomaly trends
+
+![Example](data/example_attack.png)
 
 ## Model Architecture
 
