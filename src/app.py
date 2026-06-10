@@ -29,7 +29,7 @@ def load_model():
     loss_function = nn.MSELoss()
     return model, loss_function
 
-st_autorefresh(interval=1000, key="monitor")
+st_autorefresh(interval=100, key="monitor")
 
 def monitor():
     if "idx" not in st.session_state:
