@@ -4,7 +4,7 @@ An end-to-end machine learning pipeline for detecting anomalous behavior in Indu
 
 ## [Streamlit Demo](https://ot-anomaly-demo.streamlit.app/)
 
-Demo uses a dummy dataset to mimic live monitoring, where each of the attack groups from the original dataset include a 10% buffer of normal data either side, to illustrate the beginning/end of attack.
+The demo uses a dummy dataset to mimic live monitoring, where each of the attack groups from the original dataset include a 10% buffer of normal data either side, to illustrate the beginning/end of attack.
 
 ## Overview
 
