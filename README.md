@@ -1,5 +1,7 @@
 # OT Network Anomaly Detection with Autoencoders
 
+## [Streamlit Demo](https://ot-anomaly-demo.streamlit.app/)
+
 An end-to-end machine learning pipeline for detecting anomalous behavior in Industrial Control System (ICS) network traffic using an autoencoder-based anomaly detection model.
 
 ## Overview
