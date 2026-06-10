@@ -3,7 +3,6 @@ import streamlit as st
 from models.autoencoder import Autoencoder
 import torch
 import torch.nn as nn
-import time
 import plotly.express as px
 
 if "errors" not in st.session_state:
