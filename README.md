@@ -19,8 +19,6 @@ The system trains an autoencoder on normal network traffic and uses reconstructi
 * Visualize anomaly scores through an interactive dashboard
 
 ## Dataset
-
- # url link
  
 This project uses the [Secure Water Treatment (SWaT) dataset](https://www.kaggle.com/datasets/vishala28/swat-dataset-secure-water-treatment-system/), a widely used benchmark for ICS security research.
 
@@ -63,9 +61,9 @@ During inference:
 2. Reconstruction error is calculated as MSE
 3. Observations exceeding a threshold are flagged as anomalies
 
-### 5. Visualization
+### 5. Visualization  #TODO
 
-A Streamlit dashboard displays: #TODO
+A Streamlit dashboard displays:
 
 * Traffic statistics
 * Reconstruction error distributions
@@ -119,6 +117,7 @@ ot-anomaly-demo/
 │   └── infer.py
 ├── models/
 │   ├── autoencoder.pth # saved model checkpoint
+│   ├── training_errors.pt # saved training errors for validation thresholding
 │   └── autoencoder.py
 ├── app/
 │   └── streamlit_app.py
@@ -162,6 +161,7 @@ Initial F1 score: 0.2930
 * Data leakage: MVP trains on normal network traffic, and evaluates on merged normal+attack traffic. All normal traffic already seen in training data
 * Network structure: Autoencoder layer sizes have not been tuned
 * Threshold value: MVP Error threshold set to 95th percentile of training errors. We expect 5% false negatives, current model gives ~10% false negatives, and ~40% false positives.
+* Meaned training errors: training errors are batch-meaned (n=256) during training, so thresholding calculates percentile against batch-meaned errors, rather than sample-wise training errors.
 * Raw features: MVP features only include raw inputs without any engineered features based on timeseries data. Network anomalies will likely be best detected by *change in network traffic*, rather than simply raw data at any given point. Feature engineering for statistical differences as well as change over time should improve model performance.
 * No dimensionality reduction: MVP includes all 51 input features from original dataset without any EDA for feature selection (PCA, correlation/dependency, ANOVA F-value).
 
