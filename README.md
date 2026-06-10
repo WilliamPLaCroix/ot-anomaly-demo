@@ -110,16 +110,19 @@ Alert
 
 ```text
 ot-anomaly-demo/
-├── data/ # temporary data cache, full CSV should not live here
+├── data/
+│   ├── *.png # images for visualization
+│   ├── normal.csv
+│   ├── attack.csv
+│   └── merged.csv
 ├── src/
+│   ├── models/
+│   │   ├── autoencoder.pth # saved model checkpoint
+│   │   ├── training_errors.pt # saved training errors for validation thresholding
+│   │   └── autoencoder.py
 │   ├── preprocess.py
 │   ├── train.py
-│   └── infer.py
-├── models/
-│   ├── autoencoder.pth # saved model checkpoint
-│   ├── training_errors.pt # saved training errors for validation thresholding
-│   └── autoencoder.py
-├── app/
+│   ├── infer.py
 │   └── streamlit_app.py
 ├── requirements.txt
 └── README.md
