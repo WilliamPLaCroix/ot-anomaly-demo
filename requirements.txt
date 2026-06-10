@@ -7,3 +7,4 @@ kagglehub
 fire
 streamlit
 plotly
+streamlit_autorefresh
