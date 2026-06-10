@@ -23,7 +23,7 @@ df = load_data()
 @st.cache_resource
 def load_model():
     model = Autoencoder(input_dim=51, encoding_dim=5)
-    model.load_state_dict(torch.load("src/models/autoencoder.pth"))
+    model.load_state_dict(torch.load("src/models/autoencoder.pth", map_location=torch.device('cpu')))
     model.eval()
     loss_function = nn.MSELoss()
     return model, loss_function
@@ -50,7 +50,7 @@ def monitor():
     st.session_state.timestamps = (st.session_state.timestamps[-WINDOW:])
 
     #threshold should be 95th percentile of training errors
-    training_errors = torch.load("src/models/training_errors.pt")
+    training_errors = torch.load("src/models/training_errors.pt", map_location=torch.device('cpu'))
     THRESHOLD = torch.quantile(torch.tensor(training_errors), 0.95).item()
 
     # calculate error confidence interval
