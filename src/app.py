@@ -4,6 +4,7 @@ from models.autoencoder import Autoencoder
 import torch
 import torch.nn as nn
 import plotly.express as px
+from streamlit_autorefresh import st_autorefresh
 
 if "errors" not in st.session_state:
     st.session_state.errors = []
@@ -28,7 +29,8 @@ def load_model():
     loss_function = nn.MSELoss()
     return model, loss_function
 
-st.fragment(run_every="1s")
+st_autorefresh(interval=1000, key="monitor")
+
 def monitor():
     if "idx" not in st.session_state:
         st.session_state.idx = 0
@@ -91,7 +93,7 @@ def monitor():
         name="Anomalies"
         )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width=True)
 
     st.dataframe(pd.DataFrame(st.session_state.alerts).tail(20))
 
