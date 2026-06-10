@@ -35,7 +35,8 @@ def monitor():
         
     row = df.iloc[st.session_state.idx]
     model, loss_function = load_model()
-    features = torch.tensor(row.drop(["Normal/Attack", "Timestamp"]).values, dtype=torch.float32)
+    row_features = row.drop(labels=["Timestamp", "Normal/Attack"])
+    features = torch.tensor(row_features.values, dtype=torch.float32)
     features = features.unsqueeze(0)
     with torch.no_grad():
         reconstructed = model(features)
