@@ -56,7 +56,9 @@ def monitor():
 
     #threshold should be 95th percentile of training errors
     training_errors = torch.load("src/models/training_errors.pt", map_location=torch.device('cpu'))
-    THRESHOLD = torch.quantile(torch.tensor(training_errors), 0.95).item()
+    #THRESHOLD = torch.quantile(torch.tensor(training_errors), 0.95).item()
+    # threshold wasn't triggering, set to 0.35
+    THRESHOLD = 0.35
 
     # calculate error confidence interval
     error_tensor = torch.tensor(st.session_state.errors)
