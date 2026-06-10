@@ -66,7 +66,7 @@ def monitor():
         st.session_state.alerts.append({
             "timestamp": row["Timestamp"],
             "error": float(loss.item()),
-            "Label": float(CI)
+            "Label": row["Normal/Attack"],
         })
 
     ci_map = {a["timestamp"]: a["Label"] for a in st.session_state.alerts}
