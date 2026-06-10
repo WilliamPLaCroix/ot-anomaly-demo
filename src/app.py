@@ -41,7 +41,7 @@ def monitor():
     # convert row to series with float values
     row_features = row_features.astype(float)
     features = torch.tensor(row_features.values, dtype=torch.float32)
-    features = features.unsqueeze(0)
+    #features = features.unsqueeze(0)
     with torch.no_grad():
         reconstructed = model(features)
         loss = loss_function(reconstructed, features)
