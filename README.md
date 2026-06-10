@@ -112,9 +112,7 @@ Alert
 ot-anomaly-demo/
 ├── data/
 │   ├── *.png # images for visualization
-│   ├── normal.csv
-│   ├── attack.csv
-│   └── merged.csv
+│   └── demo_test.csv # small subset for testing on Streamlit. Includes 35 attack groups with normal traffic buffers either side: 150k rows, 55k of which are attacks
 ├── src/
 │   ├── models/
 │   │   ├── autoencoder.pth # saved model checkpoint
